@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                     binding.resultTextView.text = num1
                 } else {
                     num2 += button.text.toString()
-                    binding.resultTextView.text = num2
+                    binding.resultTextView.text = num1 + operation + num2
                 }
             }
         }
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 if (!num2.contains('.')) {
                     num2 += "."
-                    binding.resultTextView.text = num2
+                    binding.resultTextView.text = num1 + operation + num2
                 }
             }
         }
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 if (num2.isNotEmpty()) {
                     num2 = num2.substring(0, num2.length - 1)
-                    binding.resultTextView.text = if (num2.isEmpty()) "0" else num2
+                    binding.resultTextView.text = num1 + operation + num2
                 }
             }
         }
@@ -94,10 +94,11 @@ class MainActivity : AppCompatActivity() {
             operation = ""
         }
     }
+
     private fun setOperation(op: String) {
-        if (num1.isNotEmpty()) {
+        if (num1.isNotEmpty() && num2.isEmpty()) {
             operation = op
-            binding.resultTextView.text = operation
+            binding.resultTextView.text = num1 + operation
         }
     }
 }
